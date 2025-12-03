@@ -20,7 +20,7 @@ async function recupererDonnees() {
 async function afficherDonnees() {
   
   const evenements = await recupererDonnees();
-  const conteneur = document.createElement('div');
+  const conteneur = document.getElementById('events-container');
   let html = '';
   evenements.forEach(data => {
     html += `
@@ -44,7 +44,6 @@ async function afficherDonnees() {
     `;
   });
   conteneur.innerHTML = `<h1>Adataviz – Événements Paris</h1><br>${html}`;
-  document.body.appendChild(conteneur);
 }
 afficherDonnees();
 
