@@ -1,7 +1,5 @@
 
 
-// // export const displayEvents = async function() {
-
 export async function recupererDonnees(limit = 20) {
   try {
     const response = await fetch(
