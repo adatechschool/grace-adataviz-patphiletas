@@ -2,7 +2,7 @@
 
 
 
-export function card(data) {
+export function afficherCards(data) {
 return `
     <article>
       <h2>${data.title}</h2>
