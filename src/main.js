@@ -18,8 +18,9 @@ async function afficherDonnees() {
   conteneur.innerHTML = `<h1>Adataviz – Événements Paris</h1><br>
   <input 
   type="text" 
-  id="search" 
-  placeholder="Rechercher un événement..."><br>${html.join('')}`;
+  id="search"
+  style="width: 80%; margin-bottom: 20px; font-size: 16px;" 
+  placeholder="Rechercher..."><br>${html.join('')}`;
 }
 
 afficherDonnees()
