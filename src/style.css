@@ -112,3 +112,20 @@ button:focus-visible {
 .hidden {
   display: none;
 }
+
+.tags {
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background: #e7e7ff;
+  color: #3a3a8f;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  border: 1px solid #d3d3d3;
+  user-select: none;
+}

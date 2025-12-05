@@ -1,7 +1,12 @@
 
 
 export function afficherCards(data) {
-return `
+
+  const tags = data.qfap_tags
+  ? data.qfap_tags.split(",").map(tags => tags.trim())
+  : [];
+
+  return `
     <div class="card">
       <h2>${data.title}</h2>
       <img src="${data.cover_url}" alt="Event titled ${data.title} " width="300">
@@ -13,11 +18,15 @@ return `
         ${data.address_zipcode ?? ''} 
         ${data.address_city ?? 'Non communiqué'}
       </p>
+      <div class="tags">
+        ${tags.map(tag => `<span class="tag">${tag}</span>`).join(" ")}
+      </div>
       <div class="descriptionHidden hidden"><p><strong>Description :</strong> ${data.lead_text ?? 'Non communiqué'} <br>${data.description}</p>
       <p><strong>Mail :</strong> ${data.contact_mail ?? 'Non communiqué'}</p>
       </div>
       <button class="toggleDescription">Voir plus</button>
     
+
       </div>
   `;
 }
@@ -32,7 +41,7 @@ export function activerToggleDescription() {
 
       // Optionnel : changer le texte du bouton
       e.target.textContent = desc.classList.contains("hidden")
-        ? "Voir plus"
+        ? "Plus d'informations"
         : "Voir moins";
     }
   });
