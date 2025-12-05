@@ -3,8 +3,6 @@
 import { recupererDonnees } from './event.js';
 import { afficherCards } from "./dom.js";
 
-
-
 let dataTotal = [];
 let currentIndex = 0;
 const limit = 3;
@@ -14,8 +12,7 @@ async function afficherDonnees() {
   initialiserPage();
   afficherMorceaux(); 
 }
-
-  
+// ---------------------------------------------------
 
 function initialiserPage() {
   const conteneur = document.getElementById('events-container');
@@ -36,7 +33,7 @@ function initialiserPage() {
 
 document.getElementById("voirPlus").addEventListener("click", afficherMorceaux);
 }
-
+// ---------------------------------------------------
 
 function afficherMorceaux() {
   const target = document.getElementById("cards-list");
@@ -55,3 +52,25 @@ function afficherMorceaux() {
   }
 }
 afficherDonnees();
+
+
+function rechercherEvenements(query) {
+  const filteredData = dataTotal.filter(event => {
+    const title = event.title ? event.title.toLowerCase() : '';
+    const description = event.description ? event.description.toLowerCase() : '';
+    return title.includes(query.toLowerCase()) || description.includes(query.toLowerCase());
+  });
+
+  const cardsList = document.getElementById('cards-list');
+  cardsList.innerHTML = '';
+  
+  filteredData.forEach(data => {
+    cardsList.innerHTML += afficherCards(data);
+  });
+}
+
+document.getElementById('search').addEventListener('input', (event) => {
+  rechercherEvenements(event.target.value);
+});
+
+rechercherEvenements('');
