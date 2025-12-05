@@ -3,7 +3,7 @@
 export function afficherCards(data) {
 
   const tags = data.qfap_tags
-  ? data.qfap_tags.split(",").map(tags => tags.trim())
+  ? data.qfap_tags.split(";").map(tags => tags.trim())
   : [];
 
   return `

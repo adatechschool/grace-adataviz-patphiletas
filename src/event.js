@@ -1,4 +1,4 @@
-
+// import { afficherCards } from "./card.js";
 
 export async function recupererDonnees(limit = 20) {
   try {
@@ -11,4 +11,15 @@ export async function recupererDonnees(limit = 20) {
     console.error('Erreur:', error);
     return [];
   }
+}
+
+
+export function activerTags() {
+  document.querySelectorAll(".tag").forEach(tagEl => {
+    tagEl.addEventListener("click", () => {
+      const tag = tagEl.dataset.tag;
+      console.log("Tag cliqué :", tag);
+
+    });
+  });
 }

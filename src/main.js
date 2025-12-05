@@ -3,6 +3,7 @@
 import { recupererDonnees } from './event.js';
 import { afficherCards } from "./dom.js";
 import { activerToggleDescription } from "./dom.js";
+import { activerTags } from './event.js';
 
 
 let dataTotal = [];
@@ -14,6 +15,9 @@ async function afficherDonnees() {
   initialiserPage();
   activerToggleDescription();
   afficherMorceaux(); 
+  filtrerParTag(tags)
+  activerTags();
+  
 }
 // ---------------------------------------------------
 
@@ -77,3 +81,21 @@ document.getElementById('search').addEventListener('input', (event) => {
 });
 
 rechercherEvenements();
+
+// ---------------------------------------------------
+
+function filtrerParTag(tag) {
+  const conteneur = document.getElementById("cards-list");
+  conteneur.innerHTML = "";
+
+  const filtered = dataTotal.filter(data =>
+    data.qfap_tags &&
+    data.qfap_tags.toLowerCase().includes(tag.toLowerCase())
+  );
+
+  filtered.forEach(data => {
+    conteneur.innerHTML += afficherCards(data);
+    
+  });
+  
+}

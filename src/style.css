@@ -48,6 +48,12 @@ h2 {
   padding: 0.6em 1.2em
 }
 
+h3 {
+  font-size: 1%.2em;
+  line-height: 1.1;
+  color: rgb(255, 255, 255);
+}
+
 #app {
   max-width: 650px;
   margin: 0 auto;
