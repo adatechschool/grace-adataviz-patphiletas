@@ -8,15 +8,16 @@ export function afficherCards(data) {
 
   return `
     <div class="card">
-          <div class="tags">
-        ${tags.map(tag => `<span class="tag">${tag}</span>`).join(" ")}
+    <button class=audienceBtn>${data.audience}</button>      
+    <div class="tags">
+        ${tags.map(tag => `<span class="tag">${tag}</span>`).join(" ")} 
       </div>
       <h2>${data.title}</h2>
       <h3>${data.address_name ?? ''}</h3> 
       <img src="${data.cover_url}" alt="Event titled ${data.title} " width="300">
       <p><strong>Date :</strong> ${data.date_start ?? 'Non communiquée'}</p>
       <p>
-        <strong>Lieu :</strong> 
+        <strong>Adresse :</strong> 
 
         ${data.address_street ?? ''}  
         ${data.address_zipcode ?? ''} 
@@ -49,3 +50,4 @@ export function activerToggleDescription() {
     }
   });
 }
+

@@ -1,6 +1,6 @@
 // import { afficherCards } from "./card.js";
 
-export async function recupererDonnees(limit = 20) {
+export async function recupererDonnees(limit = 60) {
   try {
     const response = await fetch(
       `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/que-faire-a-paris-/records?limit=${limit}`
