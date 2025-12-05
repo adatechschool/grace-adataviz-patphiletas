@@ -38,6 +38,16 @@ h1 {
   background-color: khaki;
 }
 
+h2 {
+  font-size: 1%.8em;
+  line-height: 1.1;
+  color: rgb(45, 45, 82);
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em
+}
+
 #app {
   max-width: 650px;
   margin: 0 auto;
@@ -45,8 +55,8 @@ h1 {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
+img  {
+  height: auto;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
@@ -60,13 +70,14 @@ h1 {
 
 .card {
   padding: 2em;
+  background-color: #888;
 }
 
 .read-the-docs {
   color: #888;
 }
 
-button {
+p {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -74,10 +85,11 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: #f9f9f9;
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
+p:hover {
   border-color: #646cff;
 }
 button:focus,
@@ -96,4 +108,7 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+.hidden {
+  display: none;
 }

@@ -2,6 +2,8 @@
 
 import { recupererDonnees } from './event.js';
 import { afficherCards } from "./dom.js";
+import { activerToggleDescription } from "./dom.js";
+
 
 let dataTotal = [];
 let currentIndex = 0;
@@ -10,6 +12,7 @@ const limit = 3;
 async function afficherDonnees() {
   dataTotal = await recupererDonnees(); 
   initialiserPage();
+  activerToggleDescription();
   afficherMorceaux(); 
 }
 // ---------------------------------------------------
@@ -56,8 +59,8 @@ afficherDonnees();
 
 function rechercherEvenements(query) {
   const filteredData = dataTotal.filter(event => {
-    const title = event.title ? event.title.toLowerCase() : '';
-    const description = event.description ? event.description.toLowerCase() : '';
+    const title = data.title ? data.title.toLowerCase() : '';
+    const description = data.description ? data.description.toLowerCase() : '';
     return title.includes(query.toLowerCase()) || description.includes(query.toLowerCase());
   });
 
@@ -73,4 +76,4 @@ document.getElementById('search').addEventListener('input', (event) => {
   rechercherEvenements(event.target.value);
 });
 
-rechercherEvenements('');
+rechercherEvenements();
