@@ -15,11 +15,8 @@ async function afficherDonnees() {
   initialiserPage();
   activerToggleDescription();
   afficherMorceaux(); 
-  filtrerParTag(tags)
-  activerTags();
-  
 }
-// ---------------------------------------------------
+// -------------------------------------
 
 function initialiserPage() {
   const conteneur = document.getElementById('events-container');
@@ -40,7 +37,9 @@ function initialiserPage() {
 
 document.getElementById("voirPlus").addEventListener("click", afficherMorceaux);
 }
-// ---------------------------------------------------
+afficherDonnees();
+
+// -------------------------------------
 
 function afficherMorceaux() {
   const target = document.getElementById("cards-list");
@@ -53,12 +52,12 @@ function afficherMorceaux() {
 
   currentIndex += limit;
 
-  // Si plus rien à afficher → on cache le bouton
   if (currentIndex >= dataTotal.length) {
     document.getElementById("voirPlus").style.display = "none";
   }
+  activerTags();
 }
-afficherDonnees();
+
 
 
 function rechercherEvenements(query) {
@@ -76,21 +75,21 @@ function rechercherEvenements(query) {
   });
 }
 
-document.getElementById('search').addEventListener('input', (event) => {
-  rechercherEvenements(event.target.value);
+document.getElementById('search').addEventListener('input', (data) => {
+  rechercherEvenements(data.target.value);
 });
 
 rechercherEvenements();
 
-// ---------------------------------------------------
+// -------------------------------------
 
 function filtrerParTag(tag) {
   const conteneur = document.getElementById("cards-list");
   conteneur.innerHTML = "";
 
-  const filtered = dataTotal.filter(data =>
-    data.qfap_tags &&
-    data.qfap_tags.toLowerCase().includes(tag.toLowerCase())
+  const filtered = dataTotal.filter(cardsList =>
+    cardsList.qfap_tags &&
+    cardsList.qfap_tags.toLowerCase().includes(tag.toLowerCase())
   );
 
   filtered.forEach(data => {
@@ -99,3 +98,4 @@ function filtrerParTag(tag) {
   });
   
 }
+filtrerParTag(tag)

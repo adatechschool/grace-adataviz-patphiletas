@@ -1,137 +1,142 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* --------------------------------------------------------
+   BASE
+---------------------------------------------------------*/
 
-  color-scheme: light dark;
-  /* color: rgba(255, 255, 255, 0.87); */
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+  font-family: system-ui, sans-serif;
+  background: #7e7f80;
+  margin: 0;
+  padding: 0;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+
+/* --------------------------------------------------------
+   GRID PRINCIPALE
+---------------------------------------------------------*/
 
 #events-container {
-  max-width: auto;
-  margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 0;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  color: rgb(45, 45, 82);
-  background-color: khaki;
+#cards-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
 }
 
-h2 {
-  font-size: 1%.8em;
-  line-height: 1.1;
-  color: rgb(45, 45, 82);
-  background-color: rgb(255, 255, 255);
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em
-}
 
-h3 {
-  font-size: 1%.2em;
-  line-height: 1.1;
-  color: rgb(255, 255, 255);
-}
-h4 {
-  font-size: 1%.2em;
-  line-height: 1.1;
-  color: rgb(255, 255, 255);
-}
-#app {
-  max-width: 650px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-img  {
-  height: auto;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
+/* --------------------------------------------------------
+   CARD
+---------------------------------------------------------*/
 
 .card {
-  padding: 2em;
-  background-color: #888;
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.20);
 }
 
-p {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  color: #f9f9f9;
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+
+/* --------------------------------------------------------
+   TAGS
+---------------------------------------------------------*/
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #e6ecff;
+  color: #335;
+  border-radius: 12px;
+  font-size: 0.8rem;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-p:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: background 0.2s;
+  position: center;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.tag:hover {
+  background: #d2ddff;
 }
+
+
+/* --------------------------------------------------------
+   DESCRIPTION DYNAMIQUE
+---------------------------------------------------------*/
+
+.descriptionHidden {
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
 .hidden {
   display: none;
 }
 
-.tags {
-  margin: 10px 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.toggleDescription {
+  align-self: flex-start;
+  padding: 6px 12px;
+  border: 1px solid #999;
+  background: white;
+  color: #333;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
 
-.tag {
-  background: #e7e7ff;
-  color: #3a3a8f;
-  padding: 4px 10px;
-  font-size: 0.85rem;
-  border-radius: 8px;
-  border: 1px solid #d3d3d3;
-  user-select: none;
+.toggleDescription:hover {
+  background: #f0f0f0;
+}
+
+
+/* --------------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------------*/
+
+@media (min-width: 600px) {
+  #cards-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  #cards-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
