@@ -148,6 +148,12 @@ body {
   background: #f0f0f0;
 }
 
+#cards-list {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(1, 1fr);
+}
+
 @media (min-width: 600px) {
   #cards-list {
     grid-template-columns: repeat(2, 1fr);
@@ -155,12 +161,6 @@ body {
 }
 
 @media (min-width: 900px) {
-  #cards-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 1000px) {
   #cards-list {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -181,7 +181,7 @@ body {
   margin-top: 10px;
 }
 
-.toggleDescription {
+button#voirPlus {
   align-self: flex-start;
   padding: 6px 12px;
   border: 1px solid #999;
