@@ -2,10 +2,20 @@
 #head {
   position: sticky;
   top: 0;
-  background: white;
+  background: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  font: 100% Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  text-align: align right;
+  box-shadow: (5px 0 15px rgba(5, 5, 5, 0.1));
   padding: 20px;
   z-index: 1000;
   border-bottom: 1px solid #ddd;
+  background-image: url(),opacity(0.3);
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) brightness(0.8);
+  
 }
 
 body {
@@ -14,7 +24,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
 
 #events-container {
   width: 90%;
@@ -121,7 +130,7 @@ body {
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 900px) {
   #cards-list {
     grid-template-columns: repeat(3, 1fr);
   }

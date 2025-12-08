@@ -11,6 +11,10 @@ const limit = 3;
 
 async function afficherDonnees() {
   dataTotal = await recupererDonnees(); 
+    const head = document.getElementById("head");
+  if (dataTotal[0] && dataTotal[0].cover_url) {
+    head.style.backgroundImage = `url('${dataTotal[0].cover_url}')`;
+  }
   initialiserPage();   
   afficherMorceaux(); 
   activerToggleDescription();
@@ -24,7 +28,7 @@ function initialiserPage() {
   const head = document.getElementById('head');
 
   head.innerHTML = `
-    <h1>Liste des événements à Paris</h1><br>
+    <h1>Liste des événements<br> à Paris</h1><br>
     <input 
       type="text" 
       id="search"
@@ -36,7 +40,7 @@ function initialiserPage() {
     <button id="voirPlus">Voir plus</button>
   `;
 
-  // 🔥 le bouton existe maintenant → on peut écouter
+
   document.getElementById("voirPlus").addEventListener("click", afficherMorceaux);
 
   // 🔥 le champ existe maintenant → on peut écouter
@@ -101,3 +105,4 @@ function filtrerParTag(tag) {
     conteneur.innerHTML += afficherCards(data);
   });
 }
+filtrerParTag(tag);
