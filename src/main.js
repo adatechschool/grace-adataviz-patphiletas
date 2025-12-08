@@ -27,19 +27,39 @@ function initialiserPage() {
 
   head.innerHTML = `
   <div style="text-align: center;">
-    <h1>Liste des événements à Paris</h1>
-    <input 
-      type="text" 
-      id="search"
-      style="width: 40%; font-size: 16px;" 
-      placeholder="Rechercher...">
-    <br>
-  </div>
-`;
+    <h1>Que faire à Paris</h1>
+    <div class="search-wrapper" 
+  <div style="text-align: center; width: 20%;">
       
+      <input 
+        type="text" 
+        id="search"
+        placeholder="Rechercher..."
+        style="width: 100%; align-text: center; padding-right: 35px; font-size: 16px;"
+      >
+
+      <button 
+        id="clear-search" 
+        style="
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          border: none;
+          background: transparent;
+          font-size: 20px;
+          cursor: pointer;
+          line-height: 1;
+          padding: 0;
+        ">
+        ×
+      </button>
+
+    </div>
+    `;
   conteneur.innerHTML = `
     <div id="cards-list"></div>
-    <button id="voirPlus">Voir plus</button>
+    <button id="voirPlus">Voir plus de pages</button>
   `;
 const headBg = document.querySelector('#head .bg');
 

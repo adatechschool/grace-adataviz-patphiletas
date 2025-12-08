@@ -53,9 +53,15 @@ export function activerToggleDescription() {
       desc.classList.toggle("hidden");
 
       e.target.textContent = desc.classList.contains("hidden")
-        ? "Plus d'informations"
+        ? "Voir plus"
         : "Voir moins";
     }
   });
 }
-
+document.addEventListener("click", (e) => {
+  if (e.target.id === "clear-search") {
+    const input = document.getElementById("search");
+    input.value = "";
+    input.dispatchEvent(new Event("input")); // relance la recherche
+  }
+});
