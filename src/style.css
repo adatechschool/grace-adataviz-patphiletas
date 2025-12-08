@@ -37,6 +37,8 @@ color: white;
   border-radius: 6px;
   border: none;
   outline: none;
+align-items: center;
+  margin-top: 15px;
 }
 
 body {
@@ -212,4 +214,15 @@ button#voirPlus {
   color: #ffffff;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
 }
