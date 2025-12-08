@@ -30,7 +30,7 @@ function initialiserPage() {
     <input 
       type="text" 
       id="search"
-      style="width: 80%; margin-bottom: 20px; font-size: 16px;" 
+      style="width: 40%; align-items: center; font-size: 16px;" 
       placeholder="Rechercher..."><br>`;
       
   conteneur.innerHTML = `
@@ -68,30 +68,41 @@ function afficherMorceaux() {
 // -------------------------------------
 
 function rechercherEvenements(query = "") {
+  const cardsList = document.getElementById("cards-list");
+  cardsList.innerHTML = "";
+
+  const normalizedQuery = query.trim().toLowerCase();
+
   const filteredData = dataTotal.filter(event => {
     const title = event.title?.toLowerCase() ?? "";
-    const description = event.description?.
-    toLowerCase() ?? "";
-    const qfap_tags = event.qfap_tags?.
-    toLowerCase() ?? "";
-    const audience = event.audience?.
-    toLowerCase() ?? "";
+    const description = event.description?.toLowerCase() ?? "";
+    const tags = event.qfap_tags?.toLowerCase() ?? "";
+    const audience = event.audience?.toLowerCase() ?? "";
+
     return (
-      title.includes(query.toLowerCase()) ||
-      description.includes(query.toLowerCase()) ||
-      event.qfap_tags?.toLowerCase().includes(query.toLowerCase()) ||
-      event.audience?.toLowerCase().includes(query.toLowerCase())
+      title.includes(normalizedQuery) ||
+      description.includes(normalizedQuery) ||
+      tags.includes(normalizedQuery) ||
+      audience.includes(normalizedQuery)
     );
   });
 
-  const cardsList = document.getElementById('cards-list');
-  cardsList.innerHTML = '';
+  if (filteredData.length === 0) {
+    cardsList.innerHTML = `
+      <div class="no-results">
+        Aucun événement ne correspond à « ${query} ».
+      </div>
+    `;
+    return;
+  }
 
-  filteredData.forEach(data => {
-    cardsList.innerHTML += afficherCards(data);
+  filteredData.forEach(event => {
+    cardsList.innerHTML += afficherCards(event);
   });
+
   activerTags();
 }
+
 
 // -------------------------------------
 

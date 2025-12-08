@@ -1,10 +1,21 @@
+function formatDate(dateString) {
+  if (!dateString) return "Date non communiquée";
 
+  const date = new Date(dateString);
+
+  return date.toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+}
 
 export function afficherCards(data) {
 
   const tags = data.qfap_tags
   ? data.qfap_tags.split(";").map(tags => tags.trim())
   : [];
+  const dateLisible = formatDate(data.date_start);
 
   return `
     <div class="card">
@@ -15,7 +26,7 @@ export function afficherCards(data) {
       <h2>${data.title}</h2>
       <h3>${data.address_name ?? ''}</h3> 
       <img src="${data.cover_url}" alt="Event titled ${data.title} " width="300">
-      <p><strong>Date :</strong> ${data.date_start ?? 'Non communiquée'}</p>
+      <p><strong>Date :</strong> ${dateLisible}</p>
       <p>
         <strong>Adresse :</strong> 
 
