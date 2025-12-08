@@ -62,17 +62,23 @@ function afficherMorceaux() {
 
 function rechercherEvenements(query) {
   const filteredData = dataTotal.filter(event => {
-    const title = data.title ? data.title.toLowerCase() : '';
-    const description = data.description ? data.description.toLowerCase() : '';
-    return title.includes(query.toLowerCase()) || description.includes(query.toLowerCase());
+    const title = event.title ? event.title.toLowerCase() : "";
+    const description = event.description ? event.description.toLowerCase() : "";
+    return (
+      title.includes(query.toLowerCase()) ||
+      description.includes(query.toLowerCase())
+    );
   });
 
   const cardsList = document.getElementById('cards-list');
   cardsList.innerHTML = '';
-  
-  filteredData.forEach(data => {
-    cardsList.innerHTML += afficherCards(data);
+
+  filteredData.forEach(event => {
+    cardsList.innerHTML += afficherCards(event);
   });
+
+  activerTags();
+  activerToggleDescription();
 }
 
 document.getElementById('search').addEventListener('input', (data) => {

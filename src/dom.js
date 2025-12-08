@@ -43,7 +43,6 @@ export function activerToggleDescription() {
 
       desc.classList.toggle("hidden");
 
-      // Optionnel : changer le texte du bouton
       e.target.textContent = desc.classList.contains("hidden")
         ? "Plus d'informations"
         : "Voir moins";
