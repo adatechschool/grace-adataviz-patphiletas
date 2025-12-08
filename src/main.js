@@ -27,7 +27,7 @@ function initialiserPage() {
 
   head.innerHTML = `
   <div style="text-align: center;">
-    <h1>Que faire à Paris</h1>
+    <h1>Que faire à <em>Paris</em> ?</h1>
     <div class="search-wrapper" 
   <div style="text-align: center; width: 20%;">
       

@@ -32,7 +32,7 @@ export function afficherCards(data) {
 
         ${data.address_street ?? ''}  
         ${data.address_zipcode ?? ''} 
-        ${data.address_city ?? 'Non communiqué'}
+        ${data.address_city ?? 'Non communiquée'}
       </p>
 
   
