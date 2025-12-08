@@ -12,9 +12,7 @@ const limit = 3;
 async function afficherDonnees() {
   dataTotal = await recupererDonnees(); 
     const head = document.getElementById("head");
-  if (dataTotal[0] && dataTotal[0].cover_url) {
-    head.style.backgroundImage = `url('${dataTotal[0].cover_url}')`;
-  }
+
   initialiserPage();   
   afficherMorceaux(); 
   activerToggleDescription();
@@ -28,22 +26,21 @@ function initialiserPage() {
   const head = document.getElementById('head');
 
   head.innerHTML = `
-    <h1>Liste des événements<br> à Paris</h1><br>
+    <h1>Liste des événements à Paris</h1>
     <input 
       type="text" 
       id="search"
       style="width: 80%; margin-bottom: 20px; font-size: 16px;" 
       placeholder="Rechercher..."><br>`;
-  
+      
   conteneur.innerHTML = `
     <div id="cards-list"></div>
     <button id="voirPlus">Voir plus</button>
   `;
-
+const headBg = document.querySelector('#head .bg');
 
   document.getElementById("voirPlus").addEventListener("click", afficherMorceaux);
 
-  // 🔥 le champ existe maintenant → on peut écouter
   document.getElementById("search").addEventListener("input", (ev) => {
     rechercherEvenements(ev.target.value);
   });
@@ -73,36 +70,41 @@ function afficherMorceaux() {
 function rechercherEvenements(query = "") {
   const filteredData = dataTotal.filter(event => {
     const title = event.title?.toLowerCase() ?? "";
-    const description = event.description?.toLowerCase() ?? "";
+    const description = event.description?.
+    toLowerCase() ?? "";
+    const qfap_tags = event.qfap_tags?.
+    toLowerCase() ?? "";
+    const audience = event.audience?.
+    toLowerCase() ?? "";
     return (
       title.includes(query.toLowerCase()) ||
-      description.includes(query.toLowerCase())
+      description.includes(query.toLowerCase()) ||
+      event.qfap_tags?.toLowerCase().includes(query.toLowerCase()) ||
+      event.audience?.toLowerCase().includes(query.toLowerCase())
     );
   });
 
   const cardsList = document.getElementById('cards-list');
   cardsList.innerHTML = '';
 
-  filteredData.forEach(event => {
-    cardsList.innerHTML += afficherCards(event);
+  filteredData.forEach(data => {
+    cardsList.innerHTML += afficherCards(data);
   });
-
   activerTags();
-  activerToggleDescription();
 }
 
 // -------------------------------------
 
-function filtrerParTag(tag) {
+function filtrerParTag(tags) {
   const conteneur = document.getElementById("cards-list");
   conteneur.innerHTML = "";
 
   const filtered = dataTotal.filter(evt =>
-    evt.qfap_tags?.toLowerCase().includes(tag.toLowerCase())
+    evt.qfap_tags?.toLowerCase().includes(tags.toLowerCase())
   );
 
   filtered.forEach(data => {
     conteneur.innerHTML += afficherCards(data);
   });
 }
-filtrerParTag(tag);
+filtrerParTag(tags);

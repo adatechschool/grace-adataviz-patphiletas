@@ -1,28 +1,52 @@
-
 #head {
   position: sticky;
   top: 0;
-  background: rgb(0, 0, 0);
-  color: rgb(255, 255, 255);
-  font: 100% Helvetica, Arial, sans-serif;
-  font-size: 1rem;
-  text-align: align right;
-  box-shadow: (5px 0 15px rgba(5, 5, 5, 0.1));
-  padding: 20px;
   z-index: 1000;
-  border-bottom: 1px solid #ddd;
-  background-image: url(),opacity(0.3);
+  border-bottom: 5px solid #ffffff;
+  background-image: url('image_header.jpg');
   background-size: cover;
   background-position: center;
-  filter: grayscale(100%) brightness(0.8);
-  
+  box-shadow: inset 10px 10px 20px rgba(0,0,0,0.3);
+  height: auto;    
+  min-height: 100px;  
+  padding: 20px;    
+  align-items: center;
+}
+
+#head .content {
+  position: relative;
+  z-index: 1;      
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+}
+
+#head h1 {
+
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 2.5rem;
+text-align: center;
+color: white;
+}
+
+#head input#search {
+  width: 50%;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  outline: none;
 }
 
 body {
+  width: max-content;
   font-family: system-ui, sans-serif;
   background: #7e7f80;
   margin: 0;
   padding: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 #events-container {
@@ -38,8 +62,6 @@ body {
   gap: 30px;
   margin-top: 20px;
 }
-
-
 
 .card {
   background: white;
@@ -61,7 +83,7 @@ body {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 100%;
 }
 
 .card h2 {
@@ -97,8 +119,11 @@ body {
 .tag:hover {
   background: #d2ddff;
 }
-
-
+.card p {
+  margin: 0;
+  line-height: 1.5;
+  flex-grow: 1;
+}
 
 .descriptionHidden {
   margin-top: 10px;
@@ -117,7 +142,6 @@ body {
   color: #333;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.2s ease;
 }
 
 .toggleDescription:hover {
@@ -134,4 +158,35 @@ body {
   #cards-list {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+@media (max-width: 1000px) {
+  #cards-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+#tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+#voirPlus {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.toggleDescription {
+  align-self: flex-start;
+  padding: 6px 12px;
+  border: 1px solid #999;
+  background: white;
+  color: #333;
+  border-radius: 6px;
+  cursor: pointer;
 }

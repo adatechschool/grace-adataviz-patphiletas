@@ -29,8 +29,6 @@ export function afficherCards(data) {
       <p><strong>Mail :</strong> ${data.contact_mail ?? 'Non communiqué'}</p>
       </div>
       <button class="toggleDescription">Voir plus</button>
-    
-
       </div>
   `;
 }
