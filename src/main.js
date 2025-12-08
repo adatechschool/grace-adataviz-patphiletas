@@ -26,12 +26,16 @@ function initialiserPage() {
   const head = document.getElementById('head');
 
   head.innerHTML = `
+  <div style="text-align: center;">
     <h1>Liste des événements à Paris</h1>
     <input 
       type="text" 
       id="search"
-      style="width: 40%; align-items: center; font-size: 16px;" 
-      placeholder="Rechercher..."><br>`;
+      style="width: 40%; font-size: 16px;" 
+      placeholder="Rechercher...">
+    <br>
+  </div>
+`;
       
   conteneur.innerHTML = `
     <div id="cards-list"></div>
