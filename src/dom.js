@@ -42,7 +42,7 @@ export function afficherCards(data) {
 }
 
 // ------------------------
-// Listener global posé UNE SEULE FOIS
+// Listener global pour toggle description
 // ------------------------
 
 let toggleListenerInitialized = false;
