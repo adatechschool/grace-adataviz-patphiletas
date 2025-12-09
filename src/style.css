@@ -15,7 +15,7 @@
   top: 0;
   z-index: 1000;
   border-bottom: 5px solid #ffffff;
-  background-image: url('image_header.jpg');
+  background-image: url('AdobeStock_907112018_Preview.jpeg');
   background-size: auto;
   background-position: top;
   box-shadow: inset 10px 10px 20px rgba(0,0,0,0.3);
@@ -38,11 +38,16 @@
 }
 
 #head h1 {
-
+  /* VOTRE NOUVEAU STYLE DE TITRE AVEC OMBRE PORTÉE */
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 3.5rem;
-text-align: center;
-color: white;
+  font-size: 4.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  margin-top: 15%;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.7), /* Ombre principale noire */
+    -1px -1px 0px rgba(255, 255, 255, 0.3); /* Contour clair pour le contraste */
 }
 
 #head input#search {
@@ -286,4 +291,27 @@ button#debutBtn:hover {
   font-size: 1.4rem;
   color: #888;
   line-height: 1;
+}
+
+#head button#reset-filters {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: #f7f7f7; 
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  /* PROPRIÉTÉ À AJOUTER/MODIFIER POUR L'ESPACEMENT */
+  margin-left: 15px; 
+  margin-top: 3%;
+}
+
+#head button#reset-filters:hover {
+  background-color: #e0e0e0; /* Assombrir au survol */
+}
+
+#head button#reset-filters:active {
+  transform: scale(0.98);
 }

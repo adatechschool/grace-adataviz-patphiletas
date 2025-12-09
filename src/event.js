@@ -1,6 +1,6 @@
 // import { afficherCards } from "./card.js";
 
-export async function recupererDonnees(limit = 60) {
+export async function recupererDonnees(limit = 100) {
 
   try {
     const response = await fetch(
