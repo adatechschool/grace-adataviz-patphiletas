@@ -4,34 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adataviz – Événements Paris</title>
-
   <link rel="stylesheet" href="src/style.css">
-
 </head>
 
 <body>
+  <div class="pageEntiere">
 
-<header id="head">
-  <div class="content">
-    <h1>Événements à Paris</h1>
-    <label for="search" class="sr-only">Recherche d'événements</label>
-    <input type="text" id="search" placeholder="Rechercher un événement...">
+    <header id="head">
+      <div class="content">
+        <h1>Événements à Paris</h1>
+        <label for="search" class="sr-only">Recherche d'événements</label>
+        <input type="text" id="search" placeholder="Rechercher un événement...">
+      </div>
+    </header>
+
+    <div id="app"></div>
+
+    <div id="events-container">
+      <div id="cards-list"></div>
+    </div>
+
+    <ul id="events-list"></ul>
+
   </div>
-</header>
-  <div id="app"></div>
-
-<div id="events-container">
-  <div id="cards-list"></div>
-</div>
-
-  <div id="events-container"></div>
-
-  <ul id="events-list"></ul>
-
-
 
   <script type="module" src="src/main.js"></script>
 </body>
-
 </html>
-

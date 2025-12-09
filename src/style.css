@@ -1,3 +1,9 @@
+.pageEntiere {
+  max-width: 1000px;
+  margin: 0 auto;    
+  padding: 0 1rem;
+}
+
 #head {
   position: sticky;
   top: 0;
@@ -15,10 +21,10 @@
 
 #head .content {
   position: relative;
-  z-index: 1;      
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  align-items: center;
   color: white;
 }
 
@@ -37,12 +43,11 @@ color: white;
   border-radius: 6px;
   border: none;
   outline: none;
-align-items: center;
+  align-items: center;
   margin-top: 15px;
 }
 
 body {
-  width: max-content;
   font-family: system-ui, sans-serif;
   background: #7e7f80;
   margin: 0;
@@ -72,7 +77,7 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -205,15 +210,18 @@ button#voirPlus {
   max-height: none;
 }
 .audienceBtn {
-  width: 120%;
+  align-items: center;
+  justify-content: center;
+  width: 128%;
   margin-top: 0px;
-  margin-left: -10%;
+  margin-left: -2rem;
+  /* margin-right: auto; */
   padding: 6px 12px;
   border: 1px solid #999;
   background: rgb(34, 91, 157);
   color: #ffffff;
   border-radius: 6px;
-  cursor: pointer;
+  cursor: default;
 }
 
 .sr-only {
