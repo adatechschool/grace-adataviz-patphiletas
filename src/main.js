@@ -24,52 +24,52 @@ function initialiserPage() {
   const conteneur = document.getElementById('events-container');
   const head = document.getElementById('head');
 
- head.innerHTML = `
-  <div class="content">
-    <a href="#top" class="headerTitleLink">
-      <h1>Que faire à <em>Paris</em> ?</h1>
-    </a>
-    <div style="position: relative; display: inline-block; width: 100%; max-width: 500px;">
-      <label for="search" class="sr-only">Recherche d'événements</label>
-      <input 
-        type="text" 
-        id="search"
-        placeholder="Rechercher..."
-        style="
-          width: 100%; 
-          padding: 8px 35px 8px 12px;
-          font-size: 1rem;
-          border-radius: 6px;
-          border: none;
-          outline: none;
-          box-sizing: border-box;
-        "
-      >
-      <button 
-        id="clear-search" 
-        style="
-          position: absolute;
-          right: 8px;
-          top: 50%;
-          transform: translateY(-50%);
-          border: none;
-          background: transparent;
-          font-size: 22px;
-          cursor: pointer;
-          line-height: 1;
-          padding: 0;
-          width: 24px;
-          height: 24px;
-          color: #666;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        ">
-        ×
-      </button>
+  head.innerHTML = `
+    <div class="content">
+      <a href="#top" class="headerTitleLink">
+        <h1>Que faire à <em>Paris</em> ?</h1>
+      </a>
+
+      <!-- WRAPPER SEARCH -->
+      <div id="search-wrapper"
+        style="position: relative; width: 100%; max-width: 500px;">
+        
+        <input 
+          type="text" 
+          id="search"
+          placeholder="Rechercher..."
+          style="
+            width: 100%; 
+            padding: 8px 35px 8px 12px;
+            font-size: 1rem;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            box-sizing: border-box;
+          "
+        >
+
+        <!-- CLEAR BUTTON -->
+        <button 
+          id="clear-search"
+          style="
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: none;
+          "
+        >✕</button>
+
+      </div>
+
+      <button id="reset-filters">Réinitialiser</button>
     </div>
-  </div>
-`;
+  `;
 
   conteneur.innerHTML = `
     <div id="cards-list"></div>
@@ -77,15 +77,56 @@ function initialiserPage() {
     <button id="debutBtn" style="display: none;">↑ Haut de page</button>
   `;
 
-  document.getElementById("voirPlus").addEventListener("click", afficherMorceaux);
+  // ---------------------
+  // EVENTS SEARCH & CLEAR
+  // ---------------------
+  const searchInput = document.getElementById("search");
+  const clearBtn = document.getElementById("clear-search");
+  
 
-  document.getElementById("search").addEventListener("input", (ev) => {
-    rechercherEvenements(ev.target.value);
+  searchInput.addEventListener("input", (ev) => {
+    const value = ev.target.value;
+    rechercherEvenements(value);
+    clearBtn.style.display = value ? "block" : "none";
   });
 
+  clearBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    clearBtn.style.display = "none";
+    resetAffichage();
+  });
+
+  // Voir plus
+  document.getElementById("voirPlus").addEventListener("click", afficherMorceaux);
+
+  // Retour haut de page
   document.getElementById("debutBtn").addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  // Reset filtres
+  document.getElementById("reset-filters").addEventListener("click", resetAffichage);
+}
+
+// -------------------------------------
+
+async function resetAffichage() {
+
+  // Remet les 3 cartes du début
+  const data = dataTotal.slice(0, 3);
+  currentIndex = 3;
+
+  const cardsList = document.getElementById("cards-list");
+  cardsList.innerHTML = "";
+  data.forEach(evt => cardsList.innerHTML += afficherCards(evt));
+
+  // Reset UI
+  document.getElementById("voirPlus").style.display = "block";
+  document.getElementById("search").value = "";
+  document.getElementById("clear-search").style.display = "none";
+  document.querySelectorAll(".tag.active").forEach(tag => tag.classList.remove("active"));
+
+  activerTags();
 }
 
 // -------------------------------------
@@ -165,16 +206,12 @@ function filtrerParTag(tag) {
 window.filtrerParTag = filtrerParTag;
 
 // ------------------------
-// Afficher le bouton "Haut de page" après scroll
+// Bouton haut de page
 // ------------------------
 
 window.addEventListener("scroll", () => {
   const btn = document.getElementById("debutBtn");
   if (btn) {
-    if (window.scrollY > 300) {
-      btn.style.display = "block";
-    } else {
-      btn.style.display = "none";
-    }
+    btn.style.display = window.scrollY > 300 ? "block" : "none";
   }
 });
