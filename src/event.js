@@ -14,7 +14,6 @@ export async function recupererDonnees(limit = 60) {
   }
 }
 
-
 export function activerTags() {
   document.querySelectorAll(".tag").forEach(tagEl => {
     tagEl.addEventListener("click", () => {

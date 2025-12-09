@@ -4,6 +4,12 @@
   padding: 0 1rem;
 }
 
+.headerTitleLink {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 #head {
   position: sticky;
   top: 0;
@@ -16,11 +22,14 @@
   height: auto;    
   min-height: 100px;  
   padding: 40px;    
-  align-items: center;
+
+  display: flex;      
+  justify-content: center; 
+  align-items: center;   
 }
 
 #head .content {
-  position: relative;
+  position: center;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -38,13 +47,14 @@ color: white;
 
 #head input#search {
   width: 50%;
-  padding: 8px 12px;
+  padding: 8px 40px 8px 12px; 
   font-size: 1rem;
   border-radius: 6px;
   border: none;
   outline: none;
   align-items: center;
   margin-top: 15px;
+  box-sizing: border-box; 
 }
 
 body {
@@ -199,6 +209,26 @@ button#voirPlus {
   cursor: pointer;
 }
 
+
+button#debutBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 12px 20px;
+  border: 1px solid #999;
+  background: white;
+  color: #333;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 999;
+  transition: opacity 0.3s ease;
+}
+
+button#debutBtn:hover {
+  background: #f0f0f0;
+}
+
 .description {
   max-height: 120px;
   overflow: hidden;
@@ -233,4 +263,15 @@ button#voirPlus {
   overflow: hidden;
   clip: rect(0,0,0,0);
   border: 0;
+}
+
+#clearSearch {
+  position: relative;
+  right: 10%;
+  top: 132px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
 }
