@@ -1,4 +1,3 @@
-// import { afficherCards } from "./card.js";
 
 export async function recupererDonnees(limit = 100) {
 

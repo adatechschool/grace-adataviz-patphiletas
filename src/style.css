@@ -38,7 +38,6 @@
 }
 
 #head h1 {
-  /* VOTRE NOUVEAU STYLE DE TITRE AVEC OMBRE PORTÉE */
   font-family: Helvetica, Arial, sans-serif;
   font-size: 4.5rem;
   font-weight: bold;
@@ -46,8 +45,8 @@
   color: white;
   margin-top: 15%;
   text-shadow: 
-    2px 2px 4px rgba(0, 0, 0, 0.7), /* Ombre principale noire */
-    -1px -1px 0px rgba(255, 255, 255, 0.3); /* Contour clair pour le contraste */
+    2px 2px 4px rgba(0, 0, 0, 0.7), 
+    -1px -1px 0px rgba(255, 255, 255, 0.3); /
 }
 
 #head input#search {
@@ -182,11 +181,7 @@ body {
   background: #f0f0f0;
 }
 
-/* #cards-list {
-  display: grid;
-  gap: 30px;
-  grid-template-columns: repeat(1, 1fr);
-} */
+
 
 @media (min-width: 600px) {
   #cards-list {
@@ -284,7 +279,7 @@ button#debutBtn:hover {
   position: absolute;
   right: 10px;
   top: 50%;
-  transform: translateY(-50%); /* centre verticalement */
+  transform: translateY(-50%);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -303,13 +298,12 @@ button#debutBtn:hover {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
-  /* PROPRIÉTÉ À AJOUTER/MODIFIER POUR L'ESPACEMENT */
   margin-left: 15px; 
   margin-top: 3%;
 }
 
 #head button#reset-filters:hover {
-  background-color: #e0e0e0; /* Assombrir au survol */
+  background-color: #e0e0e0; 
 }
 
 #head button#reset-filters:active {

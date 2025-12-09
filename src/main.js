@@ -7,48 +7,42 @@ let dataTotal = [];
 let currentIndex = 0;
 const limit = 3;
 
-// Déclaration des variables de gestion des tags (nécessaires pour le bon fonctionnement des tags)
+
 let tagActif = null; 
 window.gererTagClick = gererTagClick; 
 
-// ---------------------------------
-// NOUVELLE FONCTION DE TRI PAR DATE
-// ---------------------------------
+//-------------------------------
+
 function trierDonneesParDate(data) {
   return data.sort((a, b) => {
     const dateA = new Date(a.date_start);
     const dateB = new Date(b.date_start);
     
-    // Gérer les cas où la date est manquante (les mettre à la fin)
+
     if (!a.date_start) return 1;
     if (!b.date_start) return -1;
 
-    // Trier du plus ancien au plus récent
+
     return dateA - dateB; 
   });
 }
-// ---------------------------------
+// -------------------------------
 
 async function afficherDonnees() {
   dataTotal = await recupererDonnees(); 
   
-  // ÉTAPE 1 : Tri des données
   dataTotal = trierDonneesParDate(dataTotal); 
 
-  // ÉTAPE 2 : Filtrage pour exclure les dates passées
+
   const maintenant = new Date();
   
   dataTotal = dataTotal.filter(event => {
     if (!event.date_start) {
-      // Si la date de début est manquante, vous pouvez choisir de l'inclure ou de l'exclure.
-      // Par défaut, nous allons l'exclure (retourne false) pour ne montrer que les événements datés.
-      // Pour l'inclure, mettre `return true;`
+
       return false; 
     }
     const dateDebut = new Date(event.date_start);
     
-    // Conserver si la date de début est égale ou postérieure à "maintenant"
-    // On retire 1 jour pour être sûr que l'événement d'aujourd'hui ne soit pas retiré.
     return dateDebut >= maintenant;
   });
 
@@ -115,8 +109,7 @@ function initialiserPage() {
   `;
 
   // ---------------------
-  // EVENTS SEARCH & CLEAR
-  // ---------------------
+
   const searchInput = document.getElementById("search");
   const clearBtn = document.getElementById("clear-search");
   
@@ -145,7 +138,7 @@ function initialiserPage() {
   document.getElementById("reset-filters").addEventListener("click", resetAffichage);
 }
 
-// -------------------------------------
+// -----------------------------
 
 async function resetAffichage() {
 
@@ -162,12 +155,12 @@ async function resetAffichage() {
   document.getElementById("search").value = "";
   document.getElementById("clear-search").style.display = "none";
   document.querySelectorAll(".tag.active").forEach(tag => tag.classList.remove("active"));
-  tagActif = null; // Ajout pour réinitialiser l'état du tag actif
+  tagActif = null; 
 
   activerTags();
 }
 
-// -------------------------------------
+// -----------------------
 
 function afficherMorceaux() {
   const target = document.getElementById("cards-list");
@@ -192,7 +185,7 @@ function rechercherEvenements(query = "") {
   const cardsList = document.getElementById("cards-list");
   cardsList.innerHTML = "";
 
-  const voirPlusBtn = document.getElementById("voirPlus"); // On référence le bouton
+  const voirPlusBtn = document.getElementById("voirPlus"); 
   
   const normalizedQuery = query.trim().toLowerCase();
 
@@ -216,33 +209,24 @@ function rechercherEvenements(query = "") {
         Aucun événement ne correspond à « ${query} ».
       </div>
     `;
-    // Masquer le bouton seulement si aucun résultat n'est trouvé.
+    
     voirPlusBtn.style.display = "none"; 
     return;
   }
   
-  // Afficher les résultats filtrés
+
   filteredData.forEach(event => {
     cardsList.innerHTML += afficherCards(event);
   });
   
-  // Si des résultats sont trouvés, on affiche le bouton (au cas où il était masqué).
-  // Note: lors d'une recherche, le bouton "Voir plus" n'est plus pertinent 
-  // car nous affichons tous les résultats de la recherche. 
-  // *Cependant*, si vous voulez qu'il reste visible pour revenir à l'affichage initial, 
-  // il faut le laisser affiché ici.
-  // Pour une recherche simple (afficher tout ce qui matche), il est courant de le masquer.
-  // Gardons la version qui le masque, mais vous pouvez le changer en "block" si vous voulez qu'il reste visible :
-  voirPlusBtn.style.display = "none"; // **CONSERVE L'ANCIEN COMPORTEMENT DE RECHERCHE SIMPLE**
-  // Si vous souhaitez qu'il reste visible (afficher le bouton mais ne fait rien)
-  // Mettre : voirPlusBtn.style.display = "block";
+  
 
 
   activerTags();
 }
 
 // ------------------------
-// Ajout de la logique de gestion de l'état du tag (pour les fonctions dans event.js)
+
 
 function gererTagClick(tag) {
   if (tag === tagActif) {
@@ -274,7 +258,6 @@ function filtrerParTag(tag) {
     });
   }
 
-  // Mettre à jour la classe 'active'
   document.querySelectorAll(".tag").forEach(tagEl => {
     if (tagEl.dataset.tag === tagActif) {
       tagEl.classList.add("active");
@@ -285,13 +268,11 @@ function filtrerParTag(tag) {
 
   activerTags();
 }
-// Fin de l'ajout de la logique de gestion de l'état du tag
+
 // ------------------------
 
 window.filtrerParTag = filtrerParTag;
 
-// ------------------------
-// Bouton haut de page
 // ------------------------
 
 window.addEventListener("scroll", () => {
