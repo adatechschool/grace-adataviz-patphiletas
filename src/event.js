@@ -1,4 +1,5 @@
 
+
 export async function recupererDonnees(limit = 100) {
 
   try {
@@ -20,7 +21,8 @@ export function activerTags() {
     tagEl.addEventListener("click", () => {
       const tag = tagEl.dataset.tag;
       console.log("Tag cliqué :", tag);
-      filtrerParTag(tag)
+
+      window.gererTagClick(tag); 
     });
   });
 }

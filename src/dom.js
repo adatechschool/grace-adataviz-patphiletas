@@ -10,6 +10,8 @@ function formatDate(dateString) {
   });
 }
 
+// ------------------------
+
 export function afficherCards(data) {
   const tags = data.qfap_tags
     ? data.qfap_tags.split(";").map(tag => tag.trim())
@@ -40,10 +42,8 @@ export function afficherCards(data) {
     </div>
   `;
 }
+// ------------------------
 
-// ------------------------
-// Listener global pour toggle description
-// ------------------------
 
 let toggleListenerInitialized = false;
 
@@ -68,7 +68,6 @@ export function activerToggleDescription() {
 
 // ------------------------
 // Clear search
-// ------------------------
 
 document.addEventListener("click", (e) => {
   if (e.target.id === "clear-search") {

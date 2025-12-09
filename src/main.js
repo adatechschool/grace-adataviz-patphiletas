@@ -1,4 +1,3 @@
-// main.js
 import { recupererDonnees } from './event.js';
 import { afficherCards, activerToggleDescription } from "./dom.js";
 import { activerTags } from './event.js';
@@ -11,7 +10,7 @@ const limit = 3;
 let tagActif = null; 
 window.gererTagClick = gererTagClick; 
 
-//-------------------------------
+//------------------------
 
 function trierDonneesParDate(data) {
   return data.sort((a, b) => {
@@ -26,7 +25,7 @@ function trierDonneesParDate(data) {
     return dateA - dateB; 
   });
 }
-// -------------------------------
+// -----------------------
 
 async function afficherDonnees() {
   dataTotal = await recupererDonnees(); 
@@ -59,6 +58,7 @@ function initialiserPage() {
 
   head.innerHTML = `
     <div class="content">
+    <img src="src/logo.png" alt="Logo Paris" id="LogoParis"> 
       <a href="#top" class="headerTitleLink">
         <h1>Que faire à <em>Paris</em> ?</h1>
       </a>

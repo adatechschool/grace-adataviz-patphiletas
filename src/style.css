@@ -309,3 +309,12 @@ button#debutBtn:hover {
 #head button#reset-filters:active {
   transform: scale(0.98);
 }
+
+#LogoParis {
+  position: center;
+  top: 10px;
+  left: 10px;
+  width: 20rem;
+  align-items: center;
+  height: auto;
+}
