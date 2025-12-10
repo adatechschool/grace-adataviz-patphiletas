@@ -29,14 +29,15 @@ export function afficherCards(data) {
       <h3>${data.address_name ?? ''}</h3> 
       <img src="${data.cover_url}" alt="Event titled ${data.title}" width="300">
       <p><strong>Date :</strong> ${dateLisible}</p>
-      <p><strong>Prix :</strong> ${data.price_type ?? 'Non communiqué'}</p>
-      <p>
-        <strong>Adresse :</strong> 
+      
+        
+      <div class="descriptionHidden hidden"><p><strong>Prix :</strong> ${data.price_type ?? 'Non communiqué'} ${data.price_detail ?? ''}</p>
+      <strong>Adresse :</strong> 
         ${data.address_street ?? ''}  
         ${data.address_zipcode ?? ''} 
         ${data.address_city ?? 'Non communiquée'}
       </p>
-      <div class="descriptionHidden hidden">
+      <p>
         <p><strong>Description :</strong> ${data.lead_text ?? 'Non communiqué'} <br>${data.description}</p>
         <p><strong>Mail :</strong> ${data.contact_mail ?? 'Non communiqué'}</p>
       </div>

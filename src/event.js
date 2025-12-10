@@ -1,4 +1,5 @@
 
+  
 export async function recupererDonnees(limit = 100) {
 
   try {
@@ -12,8 +13,8 @@ export async function recupererDonnees(limit = 100) {
     return [];
   }
 }
-// --------------------
-// Gestion des tags
+
+// ------------------------
 
 export function activerTags() {
   document.querySelectorAll(".tag").forEach(tagEl => {

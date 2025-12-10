@@ -328,7 +328,7 @@ button#debutBtn:hover {
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
   margin-left: 15px; 
-  margin-top: 3%;
+  margin-top: 8%;
 }
 
 #head button#reset-filters:hover {
