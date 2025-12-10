@@ -11,6 +11,7 @@ function formatDate(dateString) {
 }
 
 // -----------------
+// Affichage des cartes
 
 export function afficherCards(data) {
   const tags = data.qfap_tags
@@ -28,6 +29,7 @@ export function afficherCards(data) {
       <h3>${data.address_name ?? ''}</h3> 
       <img src="${data.cover_url}" alt="Event titled ${data.title}" width="300">
       <p><strong>Date :</strong> ${dateLisible}</p>
+      <p><strong>Prix :</strong> ${data.price_type ?? 'Non communiqué'}</p>
       <p>
         <strong>Adresse :</strong> 
         ${data.address_street ?? ''}  
@@ -66,7 +68,7 @@ export function activerToggleDescription() {
   });
 }
 
-// ------------------------
+// ----------------
 // Clear search
 
 document.addEventListener("click", (e) => {

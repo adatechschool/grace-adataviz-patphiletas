@@ -10,21 +10,21 @@ let tagActif = null;
 window.gererTagClick = gererTagClick; 
 
 //----------------------
+// Tri des données par date croissante
 
 function trierDonneesParDate(data) {
   return data.sort((a, b) => {
     const dateA = new Date(a.date_start);
     const dateB = new Date(b.date_start);
     
-
     if (!a.date_start) return 1;
     if (!b.date_start) return -1;
-
 
     return dateA - dateB; 
   });
 }
 // -----------------------
+// Affichage des données
 
 async function afficherDonnees() {
   dataTotal = await recupererDonnees(); 
@@ -49,7 +49,9 @@ async function afficherDonnees() {
   activerToggleDescription();
 }
 afficherDonnees()
-// ---------------------------------
+
+// -------------------
+// Initialisation de la page
 
 function initialiserPage() {
   const conteneur = document.getElementById('events-container');
@@ -137,7 +139,8 @@ function initialiserPage() {
   document.getElementById("reset-filters").addEventListener("click", resetAffichage);
 }
 
-// -----------------------------
+// -----------------
+// Reset affichage
 
 async function resetAffichage() {
 
@@ -159,7 +162,8 @@ async function resetAffichage() {
   activerTags();
 }
 
-// -----------------------
+// -----------------
+// Affichage cartes supplémentaires
 
 function afficherMorceaux() {
   const target = document.getElementById("cards-list");
@@ -178,7 +182,8 @@ function afficherMorceaux() {
   activerTags();
 }
 
-// ------------------------------
+// -----------------------
+// Recherche d'événements
 
 function rechercherEvenements(query = "") {
   const cardsList = document.getElementById("cards-list");
@@ -224,7 +229,8 @@ function rechercherEvenements(query = "") {
   activerTags();
 }
 
-// ------------------------
+// ------------------
+// Gestion des tags
 
 
 function gererTagClick(tag) {
@@ -236,6 +242,9 @@ function gererTagClick(tag) {
     filtrerParTag(tag);
   }
 }
+
+// --------------------
+// Filtrage par tag
 
 function filtrerParTag(tag) {
   const conteneur = document.getElementById("cards-list");
@@ -268,11 +277,8 @@ function filtrerParTag(tag) {
   activerTags();
 }
 
-// ------------------------
-
 window.filtrerParTag = filtrerParTag;
 
-// ------------------------
 
 window.addEventListener("scroll", () => {
   const btn = document.getElementById("debutBtn");

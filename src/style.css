@@ -80,7 +80,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
-  margin-top: 20px;
+  margin-top: -20px;
 }
 
 .card {
@@ -112,6 +112,8 @@ body {
   object-fit: cover;
   border-radius: 12px;
   aspect-ratio: 16/9;
+  outline: 3px solid #ececec;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.20);
 }
 
 .card h2 {
@@ -124,6 +126,7 @@ body {
   margin: 0;
   font-size: 1rem;
   color: #666;
+  text-align: end;
 }
 
 .tags {
