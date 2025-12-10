@@ -10,7 +10,7 @@ function formatDate(dateString) {
   });
 }
 
-// ------------------------
+// -----------------
 
 export function afficherCards(data) {
   const tags = data.qfap_tags
@@ -42,7 +42,7 @@ export function afficherCards(data) {
     </div>
   `;
 }
-// ------------------------
+// --------------------
 
 
 let toggleListenerInitialized = false;

@@ -6,11 +6,10 @@ let dataTotal = [];
 let currentIndex = 0;
 const limit = 3;
 
-
 let tagActif = null; 
 window.gererTagClick = gererTagClick; 
 
-//------------------------
+//----------------------
 
 function trierDonneesParDate(data) {
   return data.sort((a, b) => {
@@ -63,8 +62,7 @@ function initialiserPage() {
         <h1>Que faire à <em>Paris</em> ?</h1>
       </a>
 
-      <div id="search-wrapper"
-        style="position: relative; width: 100%; max-width: 500px;">
+      <div id="search-wrapper" style="position: relative; display: inline-block;">
         
         <input 
           type="text" 
@@ -78,6 +76,7 @@ function initialiserPage() {
             border: none;
             outline: none;
             box-sizing: border-box;
+            position: center;
           "
         >
 

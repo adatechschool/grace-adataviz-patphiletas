@@ -16,12 +16,11 @@
   z-index: 1000;
   border-bottom: 5px solid #ffffff;
   background-image: url('AdobeStock_907112018_Preview.jpeg');
-  background-size: auto;
-  background-position: top;
+  background-size: cover; 
+  background-position: center; 
   box-shadow: inset 10px 10px 20px rgba(0,0,0,0.3);
-  height: auto;    
   min-height: 100px;  
-  padding: 40px;    
+  padding: 40px; 
 
   display: flex;      
   justify-content: center; 
@@ -39,26 +38,26 @@
 
 #head h1 {
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   font-weight: bold;
+  forced-color-adjust: auto;
   text-align: center;
   color: white;
-  margin-top: 15%;
   text-shadow: 
     2px 2px 4px rgba(0, 0, 0, 0.7), 
-    -1px -1px 0px rgba(255, 255, 255, 0.3); /
+    -1px -1px 0px rgba(255, 255, 255, 0.3); 
 }
 
+
 #head input#search {
-  width: 50%;
+  width: 100%; 
   padding: 8px 40px 8px 12px; 
   font-size: 1rem;
   border-radius: 6px;
   border: none;
   outline: none;
-  align-items: center;
   margin-top: 15px;
-  box-sizing: border-box; 
+  box-sizing: border-box;  
 }
 
 body {
@@ -149,6 +148,11 @@ body {
 .tag:hover {
   background: #d2ddff;
 }
+.tag.active {
+  background: #335; 
+  color: white;
+  font-weight: bold;
+}
 .card p {
   margin: 0;
   line-height: 1.5;
@@ -181,8 +185,6 @@ body {
   background: #f0f0f0;
 }
 
-
-
 @media (min-width: 600px) {
   #cards-list {
     grid-template-columns: repeat(2, 1fr);
@@ -193,7 +195,30 @@ body {
   #cards-list {
     grid-template-columns: repeat(3, 1fr);
   }
+  #head input#search {
+  width: 20%;
+  padding: 2px 2px 2px 2px; 
+  font-size: 0.5rem;
+  border-radius: 2%;
+  border: none;
+  outline: none;
+  align-items: center;
+  margin-top: 15px;
 }
+}
+
+
+@media (max-width: 600px) {
+    
+    #head {
+        padding: 20px 15px; 
+    }
+
+    #head h1 {
+        font-size: 2.5rem; 
+    }
+}
+
 
 #tagsContainer {
   display: flex;
@@ -279,7 +304,7 @@ button#debutBtn:hover {
   position: absolute;
   right: 10px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%); 
   background: transparent;
   border: none;
   cursor: pointer;
@@ -288,11 +313,12 @@ button#debutBtn:hover {
   line-height: 1;
 }
 
+
 #head button#reset-filters {
   padding: 8px 15px;
   border: none;
   border-radius: 6px;
-  background-color: #f7f7f7; 
+  background-color: #dfdddd; 
   color: #333;
   font-size: 0.9rem;
   font-weight: bold;
@@ -310,11 +336,22 @@ button#debutBtn:hover {
   transform: scale(0.98);
 }
 
-#LogoParis {
-  position: center;
-  top: 10px;
-  left: 10px;
-  width: 20rem;
-  align-items: center;
-  height: auto;
+
+#head.scrolled {
+  padding: 10px 40px; 
+  transition: padding 0.3s ease;
 }
+#head.scrolled h1 {
+  font-size: 2rem; 
+  transition: font-size 0.3s ease;
+}
+#head.scrolled #search-wrapper,
+#head.scrolled #reset-filters {
+    display: none; 
+}
+
+#LogoParis {
+  height: 22px;
+  margin-top: 10px;
+}
+
